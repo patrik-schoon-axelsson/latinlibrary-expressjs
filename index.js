@@ -28,9 +28,7 @@ app.get('/', (req, res) => {
 
 // Launch
 
-// Force Sync during development only
-
-db.sync({force: true});
+db.sync();
 
 app.listen(process.env.PORT || 5000, () => {
 
