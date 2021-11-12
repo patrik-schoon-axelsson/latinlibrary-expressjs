@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const book_controller = require('../controllers/Books');
+const chapter_controller = require('../controllers/Chapters')
+const footnote_controller = require('../controllers/Footnotes')
 const jwtAuth = require('../middleware/jwtAuthentication');
 
 
@@ -9,13 +11,9 @@ const jwtAuth = require('../middleware/jwtAuthentication');
 router.get('/books', book_controller.getAll)
       .post('/books', jwtAuth, book_controller.addBook);
 
-router.get('/books/:book_id', (req, res) => {
-    res.send(`<p>Get book with ID: ${req.params.book_id} Book model</p>` )
-}).put('/books/:book_id', jwtAuth, (req, res) => {
-    res.send(`<p>Update book with ID: ${req.params.book_id} Book model</p>` )
-}).delete('/books/:book_id', jwtAuth, (req, res) => {
-    res.send(`<p>Delete book with ID: ${req.params.book_id} Book model</p>` )
-});
+router.get('/books/:book_id', book_controller.getOne)
+.put('/books/:book_id', jwtAuth, book_controller.updateBook)
+.delete('/books/:book_id', jwtAuth, book_controller.deleteBook);
 
 // Chapter CRUD handlers.
 

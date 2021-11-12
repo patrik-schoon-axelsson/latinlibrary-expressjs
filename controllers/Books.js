@@ -1,8 +1,11 @@
 const Book = require('../models/Book');
 const bcrypt = require('bcrypt');
+const Chapter = require('../models/Chapter');
 
 exports.getAll = async (req, res) => {
-    const book_all = await Book.findAll()
+    const book_all = await Book.findAll({
+        include: [{ model: Chapter}]
+    });
     res.status(200).json(book_all);
 };
 
