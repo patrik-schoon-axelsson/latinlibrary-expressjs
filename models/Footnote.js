@@ -7,7 +7,19 @@ const Footnote = db.define('Footnote', {
         autoIncrement: true,
         primaryKey: true
     },
-
+    comment: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    reference: {
+        type: DataTypes.STRING
+    },
+    url: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
 });
+
+Footnote.hasOne(User);
 
 module.exports = Footnote
