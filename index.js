@@ -16,6 +16,7 @@ const auth_routes = require('./routes/auth');
 
 // Middleware
 
+app.use(express.static('static'))
 app.use(express.json());
 
 // Routes

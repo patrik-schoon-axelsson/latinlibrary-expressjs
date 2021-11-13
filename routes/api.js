@@ -17,34 +17,18 @@ router.get('/books/:book_id', book_controller.getOne)
 
 // Chapter CRUD handlers.
 
-router.get('/chapters', (req, res) => {
-    res.send('<p>Get ALL Chapter models</p>')
-}).post('/chapters', jwtAuth, (req, res) => {
-    res.send('<p>Add NEW Chapter model</p>')
-});
+router.get('/chapters', chapter_controller.getAll).post('/chapters', jwtAuth, chapter_controller.addChapter);
 
-router.get('/chapters/:chapter_id', (req, res) => {
-    res.send(`<p>Get Chapter with ID: ${req.params.chapter_id}</p>` )
-}).put('/chapters/:chapter_id', jwtAuth, (req, res) => {
-    res.send(`<p>Update Chapter with ID: ${req.params.chapter_id}</p>` )
-}).delete('/chapters/:chapter_id', jwtAuth, (req, res) => {
-    res.send(`<p>Delete Chapter with ID: ${req.params.chapter_id}</p>` )
-});
+router.get('/chapters/:chapter_id', chapter_controller.getOne)
+    .put('/chapters/:chapter_id', jwtAuth, chapter_controller.updateChapter)
+    .delete('/chapters/:chapter_id', jwtAuth, chapter_controller.deleteChapter);
 
 // Footnote CRUD handlers
 
-router.get('/footnotes', (req, res) => {
-    res.send('<p>Get ALL Footnote models</p>')
-}).post('/footnotes', jwtAuth, (req, res) => {
-    res.send('<p>Add NEW Footnote model</p>')
-});
+router.get('/footnotes', footnote_controller.getAll).post('/footnotes', jwtAuth, footnote_controller.addFootnote);
 
-router.get('/footnotes/:footnote_id', (req, res) => {
-    res.send(`<p>Get Footnote with ID: ${req.params.footnote_id}</p>` )
-}).put('/footnotes/:footnote_id', jwtAuth, (req, res) => {
-    res.send(`<p>Update Footnote with ID: ${req.params.footnote_id}</p>` )
-}).delete('/footnotes/:footnote_id', jwtAuth, (req, res) => {
-    res.send(`<p>Delete Footnote with ID: ${req.params.footnote_id}</p>` )
-});
+router.get('/footnotes/:footnote_id', footnote_controller.getOne)
+.put('/footnotes/:footnote_id', jwtAuth, footnote_controller.updateFootnote)
+.delete('/footnotes/:footnote_id', jwtAuth, footnote_controller.deleteFootnote);
 
 module.exports = router

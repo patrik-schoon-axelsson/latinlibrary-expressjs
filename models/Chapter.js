@@ -12,7 +12,7 @@ const Chapter = db.define('Chapter', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    chaptContent: {
+    contents: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -26,7 +26,7 @@ const Chapter = db.define('Chapter', {
     }
 });
 
-Chapter.hasMany(Footnote);
-Footnote.belongsTo(Chapter);
+Chapter.hasMany(Footnote, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+Footnote.belongsTo(Chapter, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
 module.exports = Chapter

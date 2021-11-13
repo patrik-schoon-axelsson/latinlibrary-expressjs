@@ -1,6 +1,7 @@
+const Chapter = require('../models/Chapter')
+const User = require('../models/User')
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../utils/db');
-
 const Footnote = db.define('Footnote', {
     id: {
         type: DataTypes.INTEGER,
@@ -19,7 +20,5 @@ const Footnote = db.define('Footnote', {
         allowNull: true
     }
 });
-
-Footnote.hasOne(User);
 
 module.exports = Footnote

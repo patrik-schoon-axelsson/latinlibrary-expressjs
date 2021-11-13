@@ -55,7 +55,7 @@ exports.deleteBook = async (req, res) => {
     }    
 }
 
-exports.updateBook = (req, res) => {
+exports.updateBook = async (req, res) => {
     const book_by_id = await Book.findByPk(req.params.book_id);
 
     if (book_by_id) {

@@ -26,9 +26,7 @@ const Book = db.define('Book', {
     }
 });
 
-Book.hasMany(Chapter, {
-    foreignKey: 'id'
-});
-Chapter.belongsTo(Book);
+Book.hasMany(Chapter, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+Chapter.belongsTo(Book, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
 module.exports = Book
