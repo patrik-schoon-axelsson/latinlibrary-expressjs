@@ -10,14 +10,20 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getOne = async (req, res) => {
-    const book_by_id = await Book.findByPk(req.params.book_id);
+    try {
+        const book_by_id = await Book.findByPk(req.params.book_id);
 
-    if (book_by_id) {
-        res.status(200).json(book_by_id);
-    } else {
+        if (book_by_id) {
+            res.status(200).json(book_by_id);
+        } else {
+            res.status(404).json({
+                message: `Could not locate any Book with ID: ${req.json.id}`
+            })
+        }
+    } catch(err) {
         res.status(404).json({
             message: `Could not locate any Book with ID: ${req.json.id}`
-        })
+        });
     }
 }
 
@@ -46,7 +52,7 @@ exports.deleteBook = async (req, res) => {
     if (book_by_id) {
         await book_by_id.destroy()
         res.status(204).json({
-            message: `Book with ID ${book_by_id} succesfully deleted`
+            message: `Book with ID ${book_by_id.id} succesfully deleted`
         });
     } else {
         res.status(404).json({
