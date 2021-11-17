@@ -1,3 +1,5 @@
+/* Bootstrap override variables */
+/* Custom styles*/
 html {
   font-size: 16px;
 }
@@ -5,4 +7,6 @@ html {
 html body {
   font-size: 62.5%;
 }
+
+/* Bootstrap import at the end of the file */
 /*# sourceMappingURL=App.css.map */

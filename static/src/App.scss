@@ -1,6 +1,21 @@
+/* Bootstrap override variables */
+
+$theme-colors: (
+  "primary": #0074d9,
+  "danger": #ff4136
+);
+
+/* Custom styles*/
+
 html {
   font-size: 16px;
   body {
     font-size: 62.5%;
   }
 }
+
+/* Bootstrap import at the end of the file */
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";

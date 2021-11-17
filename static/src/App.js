@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AuthContext from './context/AuthContext';
+import { useState, useEffect } from 'react';
+import Axios from './utils/axiosInstance';
 import './App.css';
+import AdminView from './views/AdminView';
+import HomeTest from './views/HomeTest';
+import NavBar from './components/UI/NavBar';
 
 function App() {
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AuthContext.Provider value={{
+        user: user,
+        accessToken: token,
+        setUser: setUser,
+        setToken: setToken
+      }}>
+        <BrowserRouter>
+        <NavBar />
+            <Routes>
+              <Route path="/" element={<HomeTest />} />
+              <Route path="/admin" element={<AdminView />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthContext.Provider>
   );
 }
 
