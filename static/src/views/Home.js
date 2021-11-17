@@ -1,7 +1,7 @@
 import Axios from '../utils/axiosInstance';
 import {useState, useEffect} from 'react';
 
-const HomeTest = () => {
+const Home = () => {
     
     const [books, setBooks] = useState([]);
     
@@ -27,4 +27,4 @@ const HomeTest = () => {
     )
 };
 
-export default HomeTest
+export default Home

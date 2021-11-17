@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Axios from './utils/axiosInstance';
 import './App.css';
 import AdminView from './views/AdminView';
-import HomeTest from './views/HomeTest';
+import Home from './views/Home';
 import NavBar from './components/UI/NavBar';
 
 function App() {
@@ -21,9 +21,10 @@ function App() {
         <BrowserRouter>
         <NavBar />
             <Routes>
-              <Route path="/" element={<HomeTest />} />
+              <Route path="/" element={<Home />} />
               <Route path="/admin" element={<AdminView />} />
             </Routes>
+            <div id="modal-wrapper"></div>
           </BrowserRouter>
         </AuthContext.Provider>
   );
